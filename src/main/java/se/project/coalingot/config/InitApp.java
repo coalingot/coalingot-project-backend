@@ -95,8 +95,6 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .endDate(Timestamp.valueOf(LocalDateTime.now()))
                 .build();
         auctionRepository.save(auc1);
-//        items[0].setAuctionAt(auc1);
-//        itemRepository.save(items[0]);
 
 
         Auction auc2 = Auction.builder()
@@ -105,8 +103,6 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .endDate(Timestamp.valueOf(LocalDateTime.now()))
                 .build();
         auctionRepository.save(auc2);
-//        items[1].setAuctionAt(auc2);
-//        itemRepository.save(items[1]);
 
         Auction auc3 = Auction.builder()
                 .auctionItem(items[2])
@@ -114,8 +110,6 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .endDate(Timestamp.valueOf(LocalDateTime.now()))
                 .build();
         auctionRepository.save(auc3);
-//        items[2].setAuctionAt(auc3);
-//        itemRepository.save(items[2]);
     }
 
 }
