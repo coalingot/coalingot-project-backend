@@ -13,6 +13,9 @@ public class ItemServiceImpl implements ItemService{
     @Autowired
     ItemDao itemDao;
 
+    @Autowired
+
+
     @Override
     public List<Item> getAllItem() {
         return itemDao.getAllItem();
@@ -26,5 +29,10 @@ public class ItemServiceImpl implements ItemService{
     @Override
     public Item itemDetail(Long id) {
         return itemDao.itemDetail(id);
+    }
+
+    @Override
+    public Item endAuction(Long auctionId) {
+        return itemDao.endAuction(auctionId);
     }
 }

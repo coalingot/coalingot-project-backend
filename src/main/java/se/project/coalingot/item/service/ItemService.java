@@ -9,4 +9,5 @@ public interface ItemService {
     List<Item> getAllItem();
     Item postItem(ItemRequest itemRequest);
     Item itemDetail(Long id);
+    Item endAuction(Long auctionId);
 }

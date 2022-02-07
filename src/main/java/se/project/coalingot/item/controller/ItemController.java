@@ -40,4 +40,11 @@ public class ItemController {
         itemService.postItem(itemRequest);
         return ResponseEntity.ok("Item has been posted");
     }
+
+    @PostMapping("/items/end-acution/{auctionId}")
+    public ResponseEntity<?> endAuction(
+            @PathVariable("auctionId") Long auctionId
+    ){
+        return ResponseEntity.ok(AuctionMapper.INSTANCE.getItemDto(itemService.endAuction(auctionId)));
+    }
 }
