@@ -36,9 +36,9 @@ public class User {
     @NotNull
     protected String password;
 
-    @Column(name="SEX",length = 10)
+    @Column(name="EMAIL",length = 50)
     @NotNull
-    protected String sex;
+    protected String email;
 
     @Column(name = "FIRSTNAME", length = 50)
     @NotNull
@@ -47,18 +47,6 @@ public class User {
     @Column(name = "LASTNAME", length = 50)
     @NotNull
     protected String lastname;
-
-    @Column(name = "date_of_birth")
-    @NotNull
-    protected Date date_of_birth;
-
-    @Column(name = "hometown", length = 100)
-    @NotNull
-    protected String hometown;
-
-    @Column(name = "EMAIL", length = 50)
-    @NotNull
-    protected String email;
 
     @Column(name = "ENABLED")
     @NotNull
@@ -69,15 +57,7 @@ public class User {
     @NotNull
     protected Date lastPasswordResetDate;
 
-    @Column(name = "verify")
-    @NotNull
-    protected Boolean verify;
-
 	@Builder.Default
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER)
     protected List<Authority> authorities = new ArrayList<>();
-
-    @ElementCollection
-    List<String> imageUrls = new ArrayList<>();
-
 }

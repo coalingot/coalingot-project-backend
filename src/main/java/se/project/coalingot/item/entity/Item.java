@@ -1,11 +1,11 @@
 package se.project.coalingot.item.entity;
 
 import lombok.*;
+import se.project.coalingot.auction.entity.Auction;
+import se.project.coalingot.auctionuser.entity.AuctionUser;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Date;
 
 @Data
 @Builder
@@ -17,4 +17,16 @@ public class Item {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Exclude
     Long itemId;
+
+    String itemName;
+    String itemImage;
+    String itemDescription;
+    Double startPrice;
+    Date endDate;
+
+    @ManyToOne
+    AuctionUser ownBy;
+
+    @OneToOne(mappedBy = "auctionItem")
+    Auction auctionAt;
 }
