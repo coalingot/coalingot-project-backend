@@ -25,8 +25,6 @@ public class ItemDaoImpl implements ItemDao {
                         .itemImage(itemRequest.getItemImage())
                         .itemName(itemRequest.getItemName())
                         .itemDescription(itemRequest.getItemDescription())
-                        .startPrice(itemRequest.getStartPrice())
-                        .endDate(itemRequest.getEndDate())
                         .build()
         );
     }

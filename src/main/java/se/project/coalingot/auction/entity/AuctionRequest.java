@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AuctionRequest {
+    Long auctionId;
     Long userId;
-    Long itemId;
     Double submitPrice;
 }

@@ -27,7 +27,11 @@ public class AuctionUserController {
     public ResponseEntity<?> submitPrice(
             @RequestBody AuctionRequest auctionRequest
     ) {
-        auctionUserService.submitPrice(auctionRequest.getUserId(),auctionRequest.getItemId(),auctionRequest.getSubmitPrice());
+        auctionUserService.submitPrice(
+                auctionRequest.getAuctionId(),
+                auctionRequest.getUserId(),
+                auctionRequest.getSubmitPrice()
+        );
         return ResponseEntity.ok("You has been submitted the price.");
     }
 

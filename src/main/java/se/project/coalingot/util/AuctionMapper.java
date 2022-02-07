@@ -3,7 +3,9 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 import se.project.coalingot.auction.dto.AuctionDto;
+import se.project.coalingot.auction.dto.AuctionHistoryDto;
 import se.project.coalingot.auction.entity.Auction;
+import se.project.coalingot.auction.entity.AuctionHistory;
 import se.project.coalingot.auctionuser.dto.AuctionUserPaticipantDto;
 import se.project.coalingot.auctionuser.entity.AuctionUser;
 import se.project.coalingot.item.dto.ItemDto;
@@ -29,4 +31,8 @@ public interface AuctionMapper {
 
     AuctionUserPaticipantDto seePaticipant(AuctionUser auctionUser);
     List<AuctionUserPaticipantDto> seePaticipant(List<AuctionUser> actionUsers);
+
+    AuctionHistory seeAuctionHistory(AuctionHistory auctionHistory);
+    List<AuctionHistoryDto> seeAuctionHistory(List<AuctionHistory> auctionHistories);
+
 }

@@ -3,6 +3,8 @@ package se.project.coalingot.auctionuser.dao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import se.project.coalingot.auction.entity.Auction;
+import se.project.coalingot.auction.entity.AuctionHistory;
+import se.project.coalingot.auction.repository.AuctionHistoryRepository;
 import se.project.coalingot.auction.repository.AuctionRepository;
 import se.project.coalingot.auctionuser.entity.AuctionUser;
 import se.project.coalingot.auctionuser.repository.AuctionUserRepository;
@@ -23,19 +25,27 @@ public class AuctionUserDaoImpl implements AuctionUserDao{
     @Autowired
     AuctionUserRepository auctionUserRepository;
 
-    @Override
-    public void submitPrice(Long userId, Long itemId, Double price) {
-        AuctionUser auctionUser = auctionUserRepository.findById(userId).orElse(null);
-        Item item = itemService.itemDetail(itemId);
+    @Autowired
+    AuctionHistoryRepository auctionHistoryRepository;
 
-        auctionRepository.save(
-                Auction.builder()
-                        .paticipant(auctionUser)
-                        .auctionItem(item)
+    @Override
+    public void submitPrice(Long auctionId,Long userId, Double price) {
+        AuctionUser auctionUser = auctionUserRepository.findById(userId).orElse(null);
+        Auction auction = auctionRepository.findById(auctionId).orElse(null);
+
+        auctionHistoryRepository.save(
+                AuctionHistory.builder()
+                        .auctionEvent(auction)
+                        .auctionUser(auctionUser)
                         .submitPrice(price)
-                        .atTime(Timestamp.valueOf(LocalDateTime.now()))
+                        .submitAt(Timestamp.valueOf(LocalDateTime.now()))
                         .build()
         );
+
+    }
+
+    @Override
+    public void seeAuctionItemDetails(Long itemId) {
 
     }
 }

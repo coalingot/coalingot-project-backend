@@ -10,7 +10,7 @@ public class AuctionUserServiceImpl implements AuctionUserService{
     AuctionUserDao auctionUserDao;
 
     @Override
-    public void submitPrice(Long userId, Long itemId, Double price) {
-        auctionUserDao.submitPrice(userId,itemId,price);
+    public void submitPrice(Long auctionId,Long userId, Double price) {
+        auctionUserDao.submitPrice(auctionId,userId,price);
     }
 }

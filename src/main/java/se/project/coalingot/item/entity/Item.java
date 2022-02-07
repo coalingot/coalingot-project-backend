@@ -21,8 +21,7 @@ public class Item {
     String itemName;
     String itemImage;
     String itemDescription;
-    Double startPrice;
-    Date endDate;
+    Double price;
 
     @ManyToOne
     AuctionUser ownBy;
