@@ -50,8 +50,67 @@
             <artifactId>spring-security-test</artifactId>
             <scope>test</scope>
         </dependency>
-    </dependencies>
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct</artifactId>
+            <version>1.4.2.Final</version>
+        </dependency>
 
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct-processor</artifactId>
+            <version>1.4.2.Final</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.mobile</groupId>
+            <artifactId>spring-mobile-device</artifactId>
+            <version>2.0.0.M3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>0.9.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.cloud</groupId>
+            <artifactId>google-cloud-storage</artifactId>
+            <version>2.3.0</version>
+        </dependency>
+    </dependencies>
+    <repositories>
+        <repository>
+            <id>public report</id>
+            <name>Maven Center</name>
+            <url>https://repo.maven.apache.org/maven2/</url>
+        </repository>
+        <repository>
+            <id>graphql date repo</id>
+            <name>repo for date of graph ql</name>
+            <url>https://dl.bintray.com/donbeave/maven/</url>
+        </repository>
+        <repository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/milestone</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>jcenter</id>
+            <url>https://jcenter.bintray.com/</url>
+        </repository>
+        <repository>
+            <id>spring-snapshots</id>
+            <url>https://repo.spring.io/snapshot</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+
+    </repositories>
     <build>
         <plugins>
             <plugin>
@@ -66,7 +125,21 @@
                     </excludes>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>17</source>
+                    <target>17</target>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
-
+    <pluginRepositories>
+        <pluginRepository>
+            <id>repository.spring.release</id>
+            <name>Spring GA Repository</name>
+            <url>https://repo.spring.io/plugins-release/</url>
+        </pluginRepository>
+    </pluginRepositories>
 </project>
