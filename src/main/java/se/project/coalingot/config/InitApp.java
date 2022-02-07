@@ -7,6 +7,9 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
+import se.project.coalingot.auction.entity.Auction;
+import se.project.coalingot.auction.repository.AuctionRepository;
+import se.project.coalingot.auction.service.AuctionService;
 import se.project.coalingot.auctionuser.entity.AuctionUser;
 import se.project.coalingot.auctionuser.repository.AuctionUserRepository;
 import se.project.coalingot.item.entity.Item;
@@ -35,11 +38,15 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
     @Autowired
     ItemRepository itemRepository;
 
+    @Autowired
+    AuctionRepository auctionRepository;
+
     @SneakyThrows
     @Override
     public void onApplicationEvent(ApplicationReadyEvent event) {
         addUser();
         addItem();
+        addAuction();
     }
 
 
@@ -70,16 +77,39 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 "https://randomwordgenerator.com/img/picture-generator/54e8dd444253a514f1dc8460962e33791c3ad6e04e507440772872dc9344c6_640.jpg"
         };
         for(int i=0;i<3;i++){
+            items[i] = Item.builder()
+                    .itemName("Item " + (i+1))
+                    .itemImage(image[i])
+                    .itemDescription("It is an item number " + (i + 1))
+                    .build();
             itemRepository.save(
-                    Item.builder()
-                            .itemName("Item " + (i+1))
-                            .itemImage(image[i])
-                            .itemDescription("It is an item number " + (i + 1))
-                            .endDate(Timestamp.valueOf(LocalDateTime.now()))
-                            .startPrice(123.50)
-                            .build()
+                    items[i]
             );
         }
+    }
+
+    public void addAuction() {
+        Auction auc1 = Auction.builder()
+                .auctionItem(items[0])
+                .startDate(Timestamp.valueOf(LocalDateTime.now()))
+                .endDate(Timestamp.valueOf(LocalDateTime.now()))
+                .build();
+        auctionRepository.save(auc1);
+
+
+        Auction auc2 = Auction.builder()
+                .auctionItem(items[1])
+                .startDate(Timestamp.valueOf(LocalDateTime.now()))
+                .endDate(Timestamp.valueOf(LocalDateTime.now()))
+                .build();
+        auctionRepository.save(auc2);
+
+        Auction auc3 = Auction.builder()
+                .auctionItem(items[2])
+                .startDate(Timestamp.valueOf(LocalDateTime.now()))
+                .endDate(Timestamp.valueOf(LocalDateTime.now()))
+                .build();
+        auctionRepository.save(auc3);
     }
 
 }

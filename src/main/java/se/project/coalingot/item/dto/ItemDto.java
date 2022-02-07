@@ -15,6 +15,4 @@ public class ItemDto {
     String itemName;
     String itemImage;
     String itemDescription;
-    Double startPrice;
-    Date endDate;
 }

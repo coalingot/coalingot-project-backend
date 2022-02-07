@@ -1,31 +1,30 @@
 package se.project.coalingot.auction.entity;
 
 import lombok.*;
+import se.project.coalingot.auctionuser.entity.AuctionUser;
 import se.project.coalingot.item.entity.Item;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 @Data
 @Builder
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class Auction {
+public class AuctionHistory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Exclude
-    Long auctionId;
+    Long auctionHistoryId;
 
-    @OneToOne
-    Item auctionItem;
+    @ManyToOne
+    AuctionUser auctionUser;
 
-    @OneToMany(mappedBy = "auctionEvent")
-    List<AuctionHistory> histories = new ArrayList<>();
+    @ManyToOne
+    Auction auctionEvent;
 
-    Date startDate;
+    Double submitPrice;
 
-    Date endDate;
+    Date submitAt;
 }
