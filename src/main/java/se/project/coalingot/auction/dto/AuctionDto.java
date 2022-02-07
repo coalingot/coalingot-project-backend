@@ -16,6 +16,8 @@ import java.util.List;
 public class AuctionDto {
     Long auctionId;
     ItemDto auctionItem;
+    Double highestPrice;
+    Boolean status;
     Date startDate;
     Date endDate;
     List<AuctionHistoryDto> histories;

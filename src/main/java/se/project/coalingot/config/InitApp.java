@@ -81,6 +81,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                     .itemName("Item " + (i+1))
                     .itemImage(image[i])
                     .itemDescription("It is an item number " + (i + 1))
+                    .price(1.20)
                     .build();
             itemRepository.save(
                     items[i]
@@ -93,6 +94,8 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .auctionItem(items[0])
                 .startDate(Timestamp.valueOf(LocalDateTime.now()))
                 .endDate(Timestamp.valueOf(LocalDateTime.now()))
+                .highestPrice(1.50)
+                .status(true)
                 .build();
         auctionRepository.save(auc1);
 
@@ -101,6 +104,8 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .auctionItem(items[1])
                 .startDate(Timestamp.valueOf(LocalDateTime.now()))
                 .endDate(Timestamp.valueOf(LocalDateTime.now()))
+                .highestPrice(1.50)
+                .status(true)
                 .build();
         auctionRepository.save(auc2);
 
@@ -108,6 +113,8 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .auctionItem(items[2])
                 .startDate(Timestamp.valueOf(LocalDateTime.now()))
                 .endDate(Timestamp.valueOf(LocalDateTime.now()))
+                .highestPrice(1.50)
+                .status(true)
                 .build();
         auctionRepository.save(auc3);
     }

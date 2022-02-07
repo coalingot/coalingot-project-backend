@@ -25,6 +25,10 @@ public class Auction {
     @OneToMany(mappedBy = "auctionEvent")
     List<AuctionHistory> histories = new ArrayList<>();
 
+    Double highestPrice;
+
+    Boolean status;
+
     Date startDate;
 
     Date endDate;

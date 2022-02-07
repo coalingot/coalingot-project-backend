@@ -23,7 +23,7 @@ public class Item {
     String itemDescription;
     Double price;
 
-    @ManyToOne
+    @ManyToOne(cascade= CascadeType.ALL)
     AuctionUser ownBy;
 
     @OneToOne(mappedBy = "auctionItem")

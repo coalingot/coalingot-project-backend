@@ -9,4 +9,5 @@ public interface ItemDao {
     List<Item> getAllItem();
     Item postItem(ItemRequest itemRequest);
     Item itemDetail(Long id);
+    Item endAuction(Long id);
 }

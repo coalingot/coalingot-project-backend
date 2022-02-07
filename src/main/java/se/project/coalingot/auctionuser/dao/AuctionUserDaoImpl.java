@@ -32,7 +32,10 @@ public class AuctionUserDaoImpl implements AuctionUserDao{
     public void submitPrice(Long auctionId,Long userId, Double price) {
         AuctionUser auctionUser = auctionUserRepository.findById(userId).orElse(null);
         Auction auction = auctionRepository.findById(auctionId).orElse(null);
-
+        if(price > auction.getHighestPrice()){
+            auction.setHighestPrice(price);
+            auctionRepository.save(auction);
+        }
         auctionHistoryRepository.save(
                 AuctionHistory.builder()
                         .auctionEvent(auction)
@@ -41,7 +44,6 @@ public class AuctionUserDaoImpl implements AuctionUserDao{
                         .submitAt(Timestamp.valueOf(LocalDateTime.now()))
                         .build()
         );
-
     }
 
     @Override
