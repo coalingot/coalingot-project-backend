@@ -47,7 +47,7 @@ public class AuctionUserDaoImpl implements AuctionUserDao{
     }
 
     @Override
-    public void seeAuctionItemDetails(Long itemId) {
-
+    public AuctionUser getAuctionUser(Long auctionUserID) {
+        return auctionUserRepository.findById(auctionUserID).orElse(null);
     }
 }

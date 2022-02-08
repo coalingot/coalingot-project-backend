@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import se.project.coalingot.auction.entity.AuctionHistory;
 import se.project.coalingot.item.dto.ItemDto;
 
 import javax.persistence.Column;
@@ -20,4 +21,5 @@ public class AuctionUserDto {
     String firstname;
     String lastname;
     List<ItemDto> own;
+    List<AuctionHistory> history;
 }

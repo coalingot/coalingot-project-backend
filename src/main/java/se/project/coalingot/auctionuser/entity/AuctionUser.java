@@ -2,6 +2,7 @@ package se.project.coalingot.auctionuser.entity;
 
 import lombok.*;
 import se.project.coalingot.auction.entity.Auction;
+import se.project.coalingot.auction.entity.AuctionHistory;
 import se.project.coalingot.item.entity.Item;
 import se.project.coalingot.security.entity.User;
 
@@ -18,5 +19,8 @@ import java.util.List;
 public class AuctionUser extends User {
    @OneToMany(mappedBy = "ownBy",cascade= CascadeType.ALL)
    List<Item> own = new ArrayList<>();
+
+   @OneToMany(mappedBy = "auctionUser",cascade= CascadeType.ALL)
+   List<AuctionHistory> history = new ArrayList<>();
 
 }
