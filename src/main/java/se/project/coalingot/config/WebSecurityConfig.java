@@ -61,7 +61,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/auth/**", "/refresh","/registers/**").permitAll()
                 .antMatchers(HttpMethod.POST,"/uploadFile").permitAll()
                 .antMatchers(HttpMethod.GET,"/items/**").hasRole("USER")
-                .antMatchers(HttpMethod.POST,"/items").hasRole("USER")
+                .antMatchers(HttpMethod.GET,"/see-all-auction").hasRole("USER")
+                .antMatchers(HttpMethod.POST,"/items/**").hasRole("USER")
+                .antMatchers(HttpMethod.POST,"/submit-price").hasRole("USER")
+                .antMatchers(HttpMethod.GET,"/auctionList/**").hasRole("USER")
                 .anyRequest().authenticated();
 
         // Custom JWT based security filter

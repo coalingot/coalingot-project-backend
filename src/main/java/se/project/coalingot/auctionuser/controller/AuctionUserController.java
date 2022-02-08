@@ -42,6 +42,11 @@ public class AuctionUserController {
         List<Auction> output = auctionRepository.findAll();
         return ResponseEntity.ok(AuctionMapper.INSTANCE.seeAuction(output));
     }
+    @GetMapping("/see-all-auction/{auctionUserID}")
+    public ResponseEntity<?> seeAuctionDetail(  @PathVariable("auctionUserID") Long auctionID){
+        Auction output = auctionRepository.findById(auctionID).orElse(null);
+        return ResponseEntity.ok(AuctionMapper.INSTANCE.seeAuction(output));
+    }
 
     @GetMapping("auctionList/{auctionUserID}")
     public ResponseEntity<?> getAuctionThatSubmit(
