@@ -16,6 +16,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+import se.project.coalingot.auctionuser.entity.AuctionUser;
+import se.project.coalingot.auctionuser.repository.AuctionUserRepository;
 import se.project.coalingot.security.JwtTokenUtil;
 import se.project.coalingot.security.entity.Authority;
 import se.project.coalingot.security.entity.AuthorityName;
@@ -47,6 +49,9 @@ public class AuthenticationRestController {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    AuctionUserRepository auctionUserRepository;
 
     @Autowired
     AuthorityRepository authorityRepository;
@@ -99,19 +104,14 @@ public class AuthenticationRestController {
         authorityRepository.save(authUser);
         PasswordEncoder encoder = new BCryptPasswordEncoder();
         if (userRepository.findByUsername(authenticationRequest.getUsername()) == null ){
-            User newUser = User.builder()
-                    .username(authenticationRequest.getUsername())
-                    .password(encoder.encode(authenticationRequest.getPassword()))
-                    .firstname(authenticationRequest.getFirstname())
-                    .lastname(authenticationRequest.getLastname())
-                    .email(authenticationRequest.getEmail())
-                    .enabled(true)
-                    .build();
-
-            newUser.getAuthorities().add(authUser);
-
-            userRepository.save(newUser);
-
+            AuctionUser newUser = new AuctionUser();
+            newUser.setUsername(authenticationRequest.getUsername());
+            newUser.setPassword(encoder.encode(authenticationRequest.getPassword()));
+            newUser.setFirstname(authenticationRequest.getFirstname());
+            newUser.setLastname(authenticationRequest.getLastname());
+            newUser.setEmail(authenticationRequest.getEmail());
+            newUser.setEnabled(true);
+            auctionUserRepository.save(newUser);
             return ResponseEntity.ok("Registration successful");
         }else {
             return (ResponseEntity<?>) ResponseEntity.status(HttpStatus.BAD_GATEWAY);
