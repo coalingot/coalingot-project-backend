@@ -39,7 +39,7 @@ public class ItemDaoImpl implements ItemDao {
         Auction auction = Auction.builder()
                 .auctionItem(item)
                 .startDate(Timestamp.valueOf(LocalDateTime.now()))
-                .endDate(Timestamp.valueOf(LocalDateTime.now()))
+                .endDate(itemRequest.getEndDate())
                 .highestPrice(itemRequest.getStartPrice())
                 .status(true)
                 .build();
@@ -58,7 +58,7 @@ public class ItemDaoImpl implements ItemDao {
         Auction auction = auctionRepository.findById(id).orElse(null);
         List<AuctionHistory> histories = auction.getHistories();
         Item item = auction.getAuctionItem();
-        AuctionUser auctionUser = new AuctionUser();
+        AuctionUser auctionUser = histories.get(0).getAuctionUser();
 
         double maxPrice = histories.get(0).getSubmitPrice();
         for(int i=1;i<histories.size();i++) {
