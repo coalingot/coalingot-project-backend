@@ -5,16 +5,12 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ItemDto {
+public class ItemHistoryDto {
     Long itemId;
     String itemName;
     String itemImage;
-    String itemDescription;
-    Double price;
-
 }

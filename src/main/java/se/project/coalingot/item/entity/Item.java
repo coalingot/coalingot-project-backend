@@ -2,6 +2,7 @@ package se.project.coalingot.item.entity;
 
 import lombok.*;
 import se.project.coalingot.auction.entity.Auction;
+import se.project.coalingot.auction.entity.AuctionHistory;
 import se.project.coalingot.auctionuser.entity.AuctionUser;
 
 import javax.persistence.*;
@@ -28,4 +29,5 @@ public class Item {
 
     @OneToOne(mappedBy = "auctionItem")
     Auction auctionAt;
+
 }
