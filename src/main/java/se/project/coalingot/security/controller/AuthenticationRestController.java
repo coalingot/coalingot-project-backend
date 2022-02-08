@@ -111,6 +111,7 @@ public class AuthenticationRestController {
             newUser.setLastname(authenticationRequest.getLastname());
             newUser.setEmail(authenticationRequest.getEmail());
             newUser.setEnabled(true);
+            newUser.getAuthorities().add(authUser);
             auctionUserRepository.save(newUser);
             return ResponseEntity.ok("Registration successful");
         }else {
