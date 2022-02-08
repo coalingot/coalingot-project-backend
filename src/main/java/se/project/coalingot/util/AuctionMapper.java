@@ -9,6 +9,7 @@ import se.project.coalingot.auction.entity.AuctionHistory;
 import se.project.coalingot.auctionuser.dto.AuctionUserDto;
 import se.project.coalingot.auctionuser.dto.AuctionUserPaticipantDto;
 import se.project.coalingot.auctionuser.entity.AuctionUser;
+import se.project.coalingot.item.dto.ItemAuctionDto;
 import se.project.coalingot.item.dto.ItemDto;
 import se.project.coalingot.item.entity.Item;
 import se.project.coalingot.security.dto.UserAuthDto;
@@ -26,6 +27,9 @@ public interface AuctionMapper {
 
     ItemDto getItemDto(Item item);
     List<ItemDto> getItemDto(List<Item> items);
+
+    ItemAuctionDto getItemAuctionDto(Item item);
+    List<ItemAuctionDto> getItemAuctionDto(List<Item> items);
 
     AuctionDto seeAuction(Auction auction);
     List<AuctionDto> seeAuction(List<Auction> auctions);

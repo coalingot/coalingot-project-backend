@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import se.project.coalingot.item.dto.ItemDto;
+import se.project.coalingot.item.dto.ItemAuctionDto;
 
 import java.util.Date;
 import java.util.List;
@@ -15,7 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 public class AuctionDto {
     Long auctionId;
-    ItemDto auctionItem;
+    ItemAuctionDto auctionItem;
     Double highestPrice;
     Boolean status;
     Date startDate;

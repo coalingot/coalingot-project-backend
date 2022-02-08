@@ -95,8 +95,10 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .startDate(Timestamp.valueOf(LocalDateTime.now()))
                 .endDate(Timestamp.valueOf(LocalDateTime.now()))
                 .highestPrice(1.50)
-                .status(true)
+                .status(false)
                 .build();
+        items[0].setOwnBy(newUser);
+        itemRepository.save(items[0]);
         auctionRepository.save(auc1);
 
 
